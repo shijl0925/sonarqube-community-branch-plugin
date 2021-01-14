@@ -1,0 +1,14 @@
+package: sonarqube-community-branch-plugin
+jdk: 1.8
+build_tool: gradle-5.1
+type: jar
+stages:
+  - deploy
+
+step1:
+    stage: deploy
+    script:
+        - gradle clean build -x test --refresh-dependencies
+    is_pkg: true
+    pkgType: jar
+    pkgFolder: build/libs
